@@ -2,15 +2,19 @@ package com.hexagonal.tareasapp.infrastructure.out.adapter;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.hexagonal.tareasapp.domain.model.User;
 import com.hexagonal.tareasapp.domain.port.out.UserRepositoryPort;
 import com.hexagonal.tareasapp.infrastructure.mapper.UserMapper;
 import com.hexagonal.tareasapp.infrastructure.out.repository.UserJpaRepository;
 
-public class UserJpaAdapter implements UserRepositoryPort{
+@Component
+public class UserJpaAdapter implements UserRepositoryPort {
 
   private final UserJpaRepository userJpaRepository;
-  public UserJpaAdapter(UserJpaRepository userJpaRepository){
+
+  public UserJpaAdapter(UserJpaRepository userJpaRepository) {
     this.userJpaRepository = userJpaRepository;
   }
 

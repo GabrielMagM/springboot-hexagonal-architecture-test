@@ -4,11 +4,15 @@ import com.hexagonal.tareasapp.domain.model.User;
 import com.hexagonal.tareasapp.infrastructure.out.entity.UserJpaEntity;
 
 public class UserMapper {
-  public static User entityToUser(UserJpaEntity userJpaEntity){
-  return new User(userJpaEntity.name,userJpaEntity.email);
+  public static User entityToUser(UserJpaEntity userJpaEntity) {
+    return new User(userJpaEntity.name, userJpaEntity.email);
   }
-  public static UserJpaEntity userToJpaEntity(User user){
-    return new UserJpaEntity(user.getId(), user.getEmail(), user.getName());
+
+  public static UserJpaEntity userToJpaEntity(User user) {
+    UserJpaEntity entity = new UserJpaEntity();
+    entity.email = user.getEmail();
+    entity.name = user.getName();
+    // No asignamos el ID, dejamos que JPA lo genere
+    return entity;
   }
 }
-
