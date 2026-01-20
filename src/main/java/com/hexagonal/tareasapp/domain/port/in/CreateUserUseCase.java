@@ -6,6 +6,10 @@ import com.hexagonal.tareasapp.domain.model.User;
 
 public interface CreateUserUseCase {
 
-  public User create(UUID id, String name, String email);
+<<<<<<< HEAD
+  public User create(String name, String email);
+=======
+  public User create(String name, String email);
+>>>>>>> upstream/main
 
 }
