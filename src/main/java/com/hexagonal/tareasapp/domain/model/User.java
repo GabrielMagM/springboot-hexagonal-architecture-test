@@ -9,7 +9,7 @@ public class User {
   private String email;
 
   public User(String name, String email) {
-    if (name != "" || email != "") {
+    if (name == null || name.isEmpty() || email == null || email.isEmpty()) {
       throw new InvalidParameterException("el nombre y el email no pueden estar vacios");
     } else if (name.length() < 5) {
       throw new InvalidParameterException("el nombre debe tener mas de 5 caracteres");

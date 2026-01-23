@@ -1,0 +1,30 @@
+### Variables
+@baseUrl = http://localhost:8080
+@contentType = application/json
+
+### Create User
+POST {{baseUrl}}/user/create
+Content-Type: {{contentType}}
+
+{
+  "name": "Jaider Rico",
+  "email": "Jaider.Rico@example.com"
+}
+
+### Create Another User
+POST {{baseUrl}}/user/create
+Content-Type: {{contentType}}
+
+{
+  "name": "María González",
+  "email": "maria.gonzalez@example.com"
+}
+
+### Test with different data
+POST {{baseUrl}}/user/create
+Content-Type: {{contentType}}
+
+{
+  "name": "Carlos Ruiz",
+  "email": "carlos.ruiz@example.com"
+}

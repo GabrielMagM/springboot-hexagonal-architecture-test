@@ -1,6 +1,5 @@
 package com.hexagonal.tareasapp.infrastructure.out.entity;
 
-
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -15,24 +14,27 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name = "users")
 
 public class UserJpaEntity {
-    @Id
-    @Column
-    @GeneratedValue
-    @NotBlank
-    public UUID id;
+  @Id
+  @Column
+  @GeneratedValue
+  public UUID id;
 
-    @Column(nullable = false, unique = true)
-    @Email
-    public String email;
+  @Column(nullable = false, unique = true)
+  @Email
+  public String email;
 
-    @Column
-    public String name;
+  @Column
+  public String name;
 
-    public UserJpaEntity(UUID id, String email, String name){
-      this.id = id;
-      this.email = email;
-      this.name = name;
-    }
-
-    //createAt
+  public UserJpaEntity() {
+    // Constructor sin parámetros requerido por JPA
   }
+
+  public UserJpaEntity(UUID id, String email, String name) {
+    this.id = id;
+    this.email = email;
+    this.name = name;
+  }
+
+  // createAt
+}
