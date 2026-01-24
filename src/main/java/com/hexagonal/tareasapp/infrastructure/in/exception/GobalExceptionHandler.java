@@ -9,8 +9,6 @@ import com.hexagonal.tareasapp.domain.exceptions.UserNotFoundException;
 
 @RestControllerAdvice
 public class GobalExceptionHandler {
-  
-
   @ExceptionHandler(UserNotFoundException.class)
   public ResponseEntity<?> handlerUserNotFoundException(UserNotFoundException ex){
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("error: " + ex.getMessage());
