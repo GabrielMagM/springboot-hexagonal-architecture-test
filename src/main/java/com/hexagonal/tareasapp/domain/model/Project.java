@@ -9,7 +9,7 @@ public class Project {
     private String description;
     private UUID ownerId;
 
-    public Project(UUID id, String name, String description, UUID ownerId) {
+    public Project(String name, String description, UUID ownerId) {
 
         if(name == null || name.isBlank()){
             throw new InvalidParameterException("Debe Ingresar el nombre al Proyecto");
@@ -21,7 +21,7 @@ public class Project {
             throw new InvalidParameterException("Debe tener un usuario");
         }
 
-        this.id = id;
+        this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
         this.ownerId = ownerId;

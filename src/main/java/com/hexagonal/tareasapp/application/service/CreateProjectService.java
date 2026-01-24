@@ -16,8 +16,7 @@ public class CreateProjectService implements CreateProjectUseCase {
 
     @Override
     public Project create(String name, String description, UUID ownerId) {
-        UUID projectId = UUID.randomUUID();
-        Project project = new Project(projectId, name, description, ownerId);
+        Project project = new Project(name, description, ownerId);
         return projectRepo.save(project);
     }
 }
