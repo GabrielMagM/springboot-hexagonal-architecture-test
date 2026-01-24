@@ -4,6 +4,6 @@ import java.util.UUID;
 
 import com.hexagonal.tareasapp.domain.model.Project;
 
-public interface CreateProjectUseCase {
+public interface ProjectUseCase {
     public Project create(String name, String description, UUID ownerId);
 }
