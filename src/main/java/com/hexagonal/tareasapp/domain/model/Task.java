@@ -12,7 +12,7 @@ public class Task {
     private Status status;
     private UUID project_id;
 
-    public Task(String title, String description, Status status, UUID project_id) {
+    public Task(String title, String description, UUID project_id) {
         if(title == null || title.isBlank()){
             throw new InvalidParameterException("Debe Ingresar el nombre al Proyecto");
         }
