@@ -45,3 +45,14 @@ Content-Type: {{contentType}}
   "description": "StartUp AI",
   "ownerid": "b75a2583-b832-48ce-9761-baefee10177c"
 }
+
+
+### POST create Task
+POST {{baseUrl}}/task/create
+Content-Type: {{contentType}}
+
+{
+  "title": "Listar Eventos",
+  "description": "se deben listar todos los eventos del organizador",
+  "project_id": "797262d4-b955-4d09-b5fa-46f7fe9b0b6e"
+}
