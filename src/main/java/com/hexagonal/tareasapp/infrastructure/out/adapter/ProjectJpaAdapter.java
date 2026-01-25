@@ -9,28 +9,30 @@ import org.springframework.stereotype.Component;
 import com.hexagonal.tareasapp.domain.model.Project;
 import com.hexagonal.tareasapp.domain.port.out.ProjectRepositoryPort;
 import com.hexagonal.tareasapp.infrastructure.mapper.ProjectMapper;
-import com.hexagonal.tareasapp.infrastructure.out.entity.ProjectJpaEntity;
+import com.hexagonal.tareasapp.infrastructure.out.entity.UserJpaEntity;
 import com.hexagonal.tareasapp.infrastructure.out.repository.ProjectJpaRepository;
+import com.hexagonal.tareasapp.infrastructure.out.repository.UserJpaRepository;
 
 @Component
-public class ProjectJpaAdapter implements ProjectRepositoryPort{
+public class ProjectJpaAdapter implements ProjectRepositoryPort {
     private final ProjectJpaRepository projectJpaRepository;
+    private final UserJpaRepository userJpaRepository;
 
-    public ProjectJpaAdapter(ProjectJpaRepository projectJpaRepository) {
+    public ProjectJpaAdapter(ProjectJpaRepository projectJpaRepository, UserJpaRepository userJpaRepository) {
         this.projectJpaRepository = projectJpaRepository;
+        this.userJpaRepository = userJpaRepository;
     }
 
     @Override
-    public Project save(Project project){
-        ProjectJpaEntity p = ProjectMapper.projectToJpaEntity(project);
-        ProjectJpaEntity prd = projectJpaRepository.save(p);
-        Project pr = ProjectMapper.entityToProject(prd);
-        return pr;
+    public Project save(Project project) {
+        UserJpaEntity owner = userJpaRepository.findById(project.getOwnerId())
+            .orElseThrow(() -> new RuntimeException("User not found"));
+        return ProjectMapper.entityToProject(projectJpaRepository.save(ProjectMapper.projectToJpaEntity(project, owner)));
     }
-    
+
     @Override
     public Optional<Project> findById(UUID id) {
-        
+
         return Optional.empty();
     }
 
@@ -41,7 +43,7 @@ public class ProjectJpaAdapter implements ProjectRepositoryPort{
 
     @Override
     public void deleteById(UUID id) {
-        
+
     }
 
 }
