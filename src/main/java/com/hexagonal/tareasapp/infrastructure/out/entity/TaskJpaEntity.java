@@ -1,9 +1,4 @@
 package com.hexagonal.tareasapp.infrastructure.out.entity;
-
-import java.util.UUID;
-
-import com.hexagonal.tareasapp.domain.enums.Status;
-
 import java.util.UUID;
 import com.hexagonal.tareasapp.domain.enums.Status;
 import jakarta.persistence.Column;
@@ -12,12 +7,10 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "tasks")
 public class TaskJpaEntity {
@@ -35,10 +28,6 @@ public class TaskJpaEntity {
     @Column
     public Status status;
 
-    @Column(nullable = false)
-    public UUID projectId;
-
-    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id",nullable = false)
     public ProjectJpaEntity project;
